@@ -3,84 +3,82 @@
 
 <head>
   <script async src="script.js"></script>
-  <style>
-    body {
-      background: linear-gradient(45deg, rgb(64, 161, 161), rgb(78, 76, 226));
-      font-family: Helvetica, sans-serif;
-      min-height: 100vh;
-      min-width: 100vw;
-    }
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
-    h2 {
-      text-align: center;
-
-    }
-
-    table {
-      font-family: Helvetica, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td,
-    th {
-      border: 1px solid #201e1e;
-      text-align: left;
-      padding: 8px;
-    }
-
-    tr:nth-child(even) {
-      background-color: #679bb9;
-    }
-  </style>
 </head>
 
 <body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1 class="display-4">MOJE WYDATKI</h1>
+      <p class="lead">Historia moich wydatków.</p>
+      <hr class="my-4">
+      </p>
+    </div>
+    <div class="row">
+      <div class="col-12 col-sm-6">
+          <div class="form-group">
+            <select class="form-control" name="kategoria" id="kategoria">
+              <option>Wybierz kategorię</option>
+              <option value="Kosmetyki">Kosmetyki</option>
+              <option value="Jedzenie">Jedzenie</option>
+              <option value="Alkohol">Alkohol</option>
+            </select>
+          </div>
+          <div class="form-group mt-3">
+            <input class="form-control" type="text" id="pole1" placeholder="WPISZ PRODUKT" />
+          </div>
+          <div class="form-group mt-3">
+            <input class = "form-control" type="text" id="pole2" placeholder="WPISZ CENĘ" />
+          </div>
+          <button class ="btn btn-secondary mt-3" id="przycisk" onclick="dodaj()">DODAJ</button>
+      </div>
+      <div class="col-12 col-sm-6">
+        <div class="alert alert-secondary m-0 p-1" role="alert">
+          SUMA JEDZENIE: <span id="sumaJedzenie">9</span>
+        </div>
+        <div class="alert alert-secondary m-0 p-1" role="alert">
+          SUMA ALKOHOL: <span id="sumaAlkohol">5</span>
+        </div>
+        <div class="alert alert-secondary m-0 p-1" role="alert">
+          SUMA KOSMETYKI: <span id="sumaKosmetyki">10</span>
+        </div>
+        <div class="alert alert-secondary m-0 p-1" role="alert">
+          SUMA WSZYSTKICH WYDATKÓW: <span id="sumaWszystkiego"></span>
+        </div>
+      </div>
+    </div>
+    <br>
 
-  <h2>MOJE WYDATKI</h2>
-  <br>
-  <select name="kategoria" id="kategoria">
-    <option value="Kosmetyki">Kosmetyki</option>
-    <option value="Jedzenie">Jedzenie</option>
-    <option value="Alkohol">Alkohol</option>
-  </select>
-  <br><br>
-  <input type="text" id="pole1" placeholder="WPISZ PRODUKT" />
-  <br><br>
-  <input type="text" id="pole2" placeholder="WPISZ CENĘ" />
-  <button id="przycisk" onclick="dodaj()">DODAJ</button>
-  <br><br>
-  <table id="tablica">
-    <tr>
-      <th>Kategoria</th>
-      <th>Produkt</th>
-      <th>Cena</th>
-    </tr>
-    <tr>
-      <td>Jedzenie</td>
-      <td>Chitosy</td>
-      <td class="pln">9</td>
-    </tr>
-    <tr>
-      <td>Alkohol</td>
-      <td>Piwo</td>
-      <td class="pln">5</td>
-    </tr>
-    <tr>
-      <td>Kosmetyki</td>
-      <td>Szampon</td>
-      <td class="pln">10</td>
-    </tr>
+    <br><br>
+    <table class = "table" id="tablica">
+      <tr>
+        <th>Kategoria</th>
+        <th>Produkt</th>
+        <th>Cena</th>
+      </tr>
+      <tr>
+        <td>Jedzenie</td>
+        <td>Chitosy</td>
+        <td class="pln">9</td>
+      </tr>
+      <tr>
+        <td>Alkohol</td>
+        <td>Piwo</td>
+        <td class="pln">5</td>
+      </tr>
+      <tr>
+        <td>Kosmetyki</td>
+        <td>Szampon</td>
+        <td class="pln">10</td>
+      </tr>
 
-  </table>
-  <br><br>
-  <div>SUMA JEDZENIE: <span id="sumaJedzenie">9</span></div>
-  <br>
-  <div>SUMA ALKOHOL: <span id="sumaAlkohol">5</span></div>
-  <br>
-  <div>SUMA KOSMETYKI: <span id="sumaKosmetyki">10</span></div>
-  <br>
-  <div>SUMA WSZYSTKICH WYDATKÓW: <span id="sumaWszystkiego"></span></div>
+    </table>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
 
 </body>
 

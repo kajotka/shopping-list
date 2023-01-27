@@ -3,6 +3,9 @@ let sumaKosmetyki = 10;
 let sumaJedzenie = 9;
 function dodaj() {
   let kategoria = document.querySelector("select").value;
+  if (kategoria === "Wybierz kategorię") {
+    return;
+  }
   let produkt = document.getElementById("pole1").value;
   let cena = document.getElementById("pole2").value;
   let table = document.getElementById("tablica");
