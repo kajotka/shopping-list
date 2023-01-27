@@ -19,7 +19,8 @@ function dodaj() {
     cell3.className = "pln";
     dodajDoSumy(kategoria, cena);
 
-}                      
+}              
+        
         
 
 let suma = 0;
