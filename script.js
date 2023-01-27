@@ -6,6 +6,7 @@ function dodaj() {
   if (kategoria === "Wybierz kategorię") {
     return;
   }
+
   let produkt = document.getElementById("pole1").value;
   let cena = document.getElementById("pole2").value;
   let table = document.getElementById("tablica");
