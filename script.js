@@ -1,6 +1,13 @@
-var sumaAlkohol = 0;
-var sumaKosmetyki = 0;
-var sumaJedzenie = 0;
+var sumy = {
+    Nalogi: 0,
+    Kosmetyki: 0,
+    Jedzenie: 0,
+    Rachunki: 0,
+    Komunikacja: 0,
+    Zdrowie: 0,
+    Inne: 0,
+    Wszystkie: 0
+};
 
 var api_host = 'http://localhost:5001';
 
@@ -51,25 +58,18 @@ let sumaWszystkiego = document.querySelector("#sumaWszystkiego");
 sumaWszystkiego.innerHTML = suma;
 
 function dodajDoSumy(kategoria, cena) {
-    if (kategoria === "Alkohol") {
-        sumaAlkohol += Number(cena);
-        suma += Number(cena);
-        console.log(suma);
-        document.querySelector("#sumaAlkohol").innerHTML = sumaAlkohol;
-        document.querySelector("#sumaWszystkiego").innerHTML = suma;
-    }
-    if (kategoria === "Jedzenie") {
-        sumaJedzenie += Number(cena);
-        suma += Number(cena);
-        document.querySelector("#sumaJedzenie").innerHTML = sumaJedzenie;
-        document.querySelector("#sumaWszystkiego").innerHTML = suma;
-    }
-    if (kategoria === "Kosmetyki") {
-        sumaKosmetyki += Number(cena);
-        suma += Number(cena);
-        document.querySelector("#sumaKosmetyki").innerHTML = sumaKosmetyki;
-        document.querySelector("#sumaWszystkiego").innerHTML = suma;
-    }
+    sumy[kategoria] += Number(cena);
+    document.querySelector("#suma"+ kategoria).innerHTML = sumy[kategoria];
+    sumy.Wszystkie += Number(cena);
+    document.querySelector("#sumaWszystkiego").innerHTML =  sumy.Wszystkie;
+ 
+    // if (kategoria === "Jedzenie") {
+    //     sumaJedzenie += Number(cena);
+    //     suma += Number(cena);
+    //     document.querySelector("#sumaJedzenie").innerHTML = sumaJedzenie;
+    //     document.querySelector("#sumaWszystkiego").innerHTML = suma;
+    // }
+   
 }
 
 function wczytaj() {
@@ -100,8 +100,6 @@ $('#kategoria').select2({
 
 
 
-
-
 function render() {
     const ctx = document.getElementById('myChart2');
     if(window.chart!= null)
@@ -111,22 +109,23 @@ function render() {
     window.chart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Kosmetyki', 'Jedzenie', 'Alkohol'],
+            labels: ['Kosmetyki', 'Jedzenie', 'Nałogi', "Zdrowie", "Komunikacja", "Rachunki", "Inne"],
             datasets: [{
                 label: 'Wykres wydatkow',
-                data: [sumaKosmetyki, sumaJedzenie, sumaAlkohol],
+                data: [sumy.Kosmetyki, sumy.Jedzenie, sumy.Nalogi, sumy.Zdrowie, sumy.Komunikacja, sumy.Rachunki, sumy.Inne],
                 borderWidth: 1
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
+            
         }
     });
 }
 
 
 render();
+
+// $(document).ready( function () {
+//     $('#tablica').DataTable();
+    
+// } );
