@@ -1,6 +1,6 @@
-let sumaAlkohol = 5;
-let sumaKosmetyki = 10;
-let sumaJedzenie = 9;
+var sumaAlkohol = 0;
+var sumaKosmetyki = 0;
+var sumaJedzenie = 0;
 
 var api_host = 'http://localhost:5001';
 
@@ -23,7 +23,7 @@ function dodaj() {
     cell3.className = "pln";
     dodajDoSumy(kategoria, cena);
 
-    fetch(api_host + '/zakup/add', {
+    fetch('http://localhost:5001/zakup/add', {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
@@ -35,8 +35,8 @@ function dodaj() {
             price: cena
         })
     }).then(function (response) {
-        alert("Dodano do bazy danych");
     });
+    render();
 }
 
 
@@ -73,7 +73,7 @@ function dodajDoSumy(kategoria, cena) {
 }
 
 function wczytaj() {
-    fetch(api_host + '/zakup').then(function (response) {
+    fetch('http://localhost:5001/zakup/get').then(function (response) {
         response.json().then(function (json) {
             json.forEach(function (zakup) {
                 let table = document.getElementById("tablica");
@@ -85,8 +85,48 @@ function wczytaj() {
                 cell2.innerHTML = zakup.name;
                 cell3.innerHTML = zakup.price;
                 cell3.className = "pln";
+                dodajDoSumy(zakup.category, zakup.price)
             })
         });
     });
-    document.getElementById("wczytaj").disabled = true;
 }
+
+wczytaj();
+
+
+$('#kategoria').select2({
+    placeholder: 'Select an option'
+});
+
+
+
+
+
+function render() {
+    const ctx = document.getElementById('myChart2');
+    if(window.chart!= null)
+    {
+     window.chart.destroy();
+    }
+    window.chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Kosmetyki', 'Jedzenie', 'Alkohol'],
+            datasets: [{
+                label: 'Wykres wydatkow',
+                data: [sumaKosmetyki, sumaJedzenie, sumaAlkohol],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+}
+
+
+render();

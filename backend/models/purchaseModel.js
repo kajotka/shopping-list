@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 
-const purchaseSchema = new mongoose.Schema({
+const modelZakupu = new mongoose.Schema({
     'name': {
         type: String,
         required: true
@@ -16,4 +16,4 @@ const purchaseSchema = new mongoose.Schema({
     },
 });
 
-module.exports = mongoose.model('Purchase', purchaseSchema);
+module.exports = mongoose.model('Purchase', modelZakupu);
