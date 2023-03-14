@@ -9,11 +9,9 @@ var sumy = {
   Wszystkie: 0,
 };
 
-// backend
-var api_host = 'http://localhost:5001';
-
 function dodaj() {
   let kategoria = document.querySelector("select").value;
+  console.log(kategoria);
   if (kategoria === "Wybierz kategorię") {
     return;
   }
@@ -30,24 +28,7 @@ function dodaj() {
   cell3.innerHTML = cena;
   cell3.className = "pln";
   dodajDoSumy(kategoria, cena);
-
-
-//backend
-    fetch('http://localhost:5001/zakup/add', {
-        method: 'POST',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            name: produkt,
-            category: kategoria,
-            price: cena
-        })
-    }).then(function (response) {
-    });
-    render();
-
+  render();
 }
 
 let suma = 0;
@@ -65,28 +46,6 @@ function dodajDoSumy(kategoria, cena) {
   sumy.Wszystkie += Number(cena);
   document.querySelector("#sumaWszystkiego").innerHTML = sumy.Wszystkie;
 }
-
-//backend
-function wczytaj() {
-    fetch('http://localhost:5001/zakup/get').then(function (response) {
-        response.json().then(function (json) {
-            json.forEach(function (zakup) {
-                let table = document.getElementById("tablica");
-                let row = table.insertRow(-1);
-                let cell1 = row.insertCell(0);
-                let cell2 = row.insertCell(1);
-                let cell3 = row.insertCell(2);
-                cell1.innerHTML = zakup.category;
-                cell2.innerHTML = zakup.name;
-                cell3.innerHTML = zakup.price;
-                cell3.className = "pln";
-                dodajDoSumy(zakup.category, zakup.price)
-            })
-        });
-    });
-}
-
-wczytaj();
 
 $("#kategoria").select2({
   placeholder: "Select an option",
