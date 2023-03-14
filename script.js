@@ -1,5 +1,5 @@
 var sumy = {
-  Nalogi: 0,
+  Rekreacja: 0,
   Kosmetyki: 0,
   Jedzenie: 0,
   Rachunki: 0,
@@ -62,7 +62,7 @@ function render() {
       labels: [
         "Kosmetyki",
         "Jedzenie",
-        "Nałogi",
+        "Rekreacja",
         "Zdrowie",
         "Komunikacja",
         "Rachunki",
@@ -74,7 +74,7 @@ function render() {
           data: [
             sumy.Kosmetyki,
             sumy.Jedzenie,
-            sumy.Nalogi,
+            sumy.Rekreacja,
             sumy.Zdrowie,
             sumy.Komunikacja,
             sumy.Rachunki,

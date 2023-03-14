@@ -16,13 +16,13 @@
       </p>
     </div>
     <div class="row">
-      <div class="col-12 col-sm-6">
-        <div class="form-group">
+      <div class="col-12 col-md-6">
+        <div class="form-group" style="width:100%">
           <select class="form-control" name="kategoria" id="kategoria">
             <option>Wybierz kategorię</option>
             <option value="Kosmetyki">Kosmetyki</option>
             <option value="Jedzenie">Jedzenie</option>
-            <option value="Nalogi">Nałogi</option>
+            <option value="Rekreacja">Rekreacja</option>
             <option value="Rachunki">Rachunki</option>
             <option value="Komunikacja">Komunikacja</option>
             <option value="Zdrowie">Zdrowie</option>
@@ -37,12 +37,12 @@
         </div>
         <button class="btn btn-secondary mt-3" id="przycisk" onclick="dodaj()">DODAJ</button>
       </div>
-      <div class="col-12 col-sm-6">
+      <div class="col-12 col-md-6">
         <div class="alert alert-secondary m-0 p-1" role="alert">
           SUMA JEDZENIE: <span id="sumaJedzenie">0</span>
         </div>
         <div class="alert alert-secondary m-0 p-1" role="alert">
-          SUMA NAŁOGI: <span id="sumaNalogi">0</span>
+          SUMA REKREACJA: <span id="sumaRekreacja">0</span>
         </div>
         <div class="alert alert-secondary m-0 p-1" role="alert">
           SUMA KOSMETYKI: <span id="sumaKosmetyki">0</span>
@@ -64,8 +64,8 @@
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-6" style="height:450px; overflow:scroll">
+    <div class="row mt-5 mt-md-0">
+      <div class="col-12 col-md-6" style="height:450px; overflow:scroll">
         <table class="table" id="tablica">
           <thead>
             <tr>
@@ -76,7 +76,7 @@
           </thead>
         </table>
       </div>
-      <div class="col-6"
+      <div class="col-12 col-md-6"
         style="height: 450px; display: flex; align-items: center; justify-content: center; margin-top: 10px;">
         <canvas id="myChart2"></canvas>
       </div>
